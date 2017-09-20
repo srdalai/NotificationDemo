@@ -52,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
                     // new push notification is received
 
                     String message = intent.getStringExtra("message");
+                    //Added later on
+                    String activity = intent.getStringExtra("activity");
+                    if(activity.equals("offer"))
+                    {
+                        takeAction();
+
+                    }
 
                     Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
 
@@ -60,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         displayFirebaseRegId();
+    }
+
+    //New takeAction function
+    public void takeAction()
+    {
+        Intent i = new Intent(this, OfferActivity.class);
+        startActivity(i);
     }
 
     // Fetches reg id from shared preferences
